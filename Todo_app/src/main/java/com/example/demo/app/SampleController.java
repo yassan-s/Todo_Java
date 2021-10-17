@@ -5,8 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
-// 最初のサーバー起動 + 画面表示テスト用のController
+/**
+ * 最初のサーバー起動 + 画面表示テスト用のController
+ */
 @Controller
 @RequestMapping("/sample")
 public class SampleController {
