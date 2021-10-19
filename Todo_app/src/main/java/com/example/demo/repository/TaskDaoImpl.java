@@ -8,10 +8,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Task;
 import com.example.demo.entity.TaskType;
 
+@Repository
 public class TaskDaoImpl implements TaskDao {
 
 	// DB操作用のクラス
@@ -109,20 +111,21 @@ public class TaskDaoImpl implements TaskDao {
 
 	@Override
 	public void insert(Task task) {
-		// TODO 自動生成されたメソッド・スタブ
-
+		jdbcTemplate.update("INSERT INTO task(user_id, type_id, title, detail, deadline) VALUES(?, ?, ?, ?,?)",
+				 task.getUserId(), task.getTypeId(), task.getTitle(), task.getDetail(), task.getDeadline() );
 	}
 
+	// updateの場合、更新相手がないと「０」を返してくる
+	// 例外処理をServiceで設定するため
 	@Override
 	public int update(Task task) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return jdbcTemplate.update("UPDATE task SET type_id = ?, title = ?, detail = ?,deadline = ? WHERE id = ?",
+				task.getTypeId(), task.getTitle(), task.getDetail(), task.getDeadline(), task.getId() );
 	}
 
 	@Override
 	public int deleteById(int id) {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return jdbcTemplate.update("DELETE FROM task WHERE id = ?", id);
 	}
 
 	@Override
