@@ -78,7 +78,7 @@ public class TaskDaoImpl implements TaskDao {
 		// SQLインジェクションを防ぐ
 		String sql = "SELECT task.id, user_id, type_id, title, detail, deadline, "
 				+ "type, comment FROM task "
-				+ "LEFT JOIN task_type ON task.type_id = task_type.id"
+				+ "LEFT JOIN task_type ON task.type_id = task_type.id "
 				+ "WHERE task.id = ?";
 
 		// Task一覧をMapのListで取得
@@ -128,10 +128,5 @@ public class TaskDaoImpl implements TaskDao {
 		return jdbcTemplate.update("DELETE FROM task WHERE id = ?", id);
 	}
 
-	@Override
-	public List<Task> findByType(int typeId) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 
 }

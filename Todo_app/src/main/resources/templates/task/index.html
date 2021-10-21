@@ -44,32 +44,9 @@
 			<input type="submit" value="削除">
 			</form>
 		</td>
-		<!-- 1-4　複製ボタンを作成する -->
-		<td>
-			<form method="GET" th:action="@{/task/duplicate}">
-			<input type="hidden" name="taskId" th:value="${obj.id}">
-			<input type="submit" value="複製">
-			</form>
-		</td>
 	</tr>
 </table>
 
-<br>
-<!-- 2-7 絞り込みボタンを作成する -->
-<form method="GET" th:action="@{/task/selectType}" th:object="${taskForm}">
-	<label>タスクタイプの絞り込み（選択してください）：</label>
-	<select name="typeId">
-	<option value="1" th:selected="*{typeId == 1}">緊急</option>
-	<option value="2" th:selected="*{typeId == 2}">重要</option>
-	<option value="3" th:selected="*{typeId == 3}">できれば</option>
-	</select><br>
-	<input type="submit" value="絞り込む">
-</form>
-<br>
-<!-- 2-8 絞り込み解除ボタンを作成する -->
-<form method="GET" th:action="@{/task}">
-	<input type="submit" value="絞り込み解除">
-</form>
 </div>
 
 <p th:unless="${taskForm.newTask}"><a href="#" th:href="@{/task}">戻る</a></p>
