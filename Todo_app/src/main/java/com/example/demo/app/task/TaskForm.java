@@ -28,7 +28,7 @@ public class TaskForm {
     private LocalDateTime deadline;
 
     // 新規登録か更新かを分岐させる
-    private boolean isNewTask;
+    private boolean newTask;
 
     public TaskForm() {}
 
@@ -36,12 +36,12 @@ public class TaskForm {
 			String title,
 			String detail,
 			LocalDateTime deadline,
-			boolean isNewTask) {
+			boolean newTask) {
 		this.typeId = typeId;
 		this.title = title;
 		this.detail = detail;
 		this.deadline = deadline;
-		this.isNewTask = isNewTask;
+		this.newTask = newTask;
 	}
 
 	public int getTypeId() {
@@ -77,10 +77,10 @@ public class TaskForm {
 	}
 
 	public boolean isNewTask() {
-		return isNewTask;
+		return newTask;
 	}
 
-	public void setNewTask(boolean isNewTask) {
-		this.isNewTask = isNewTask;
+	public void setNewTask(boolean newTask) {
+		this.newTask = newTask;
 	}
 }
